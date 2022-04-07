@@ -1,18 +1,24 @@
-#include "main.h"
 #include <stdlib.h>
+#include "main.h"
 /**
- * free_grid - free the allocation
- * @grid: the grid
- * @height: columns
- * Return: nothing
+ * free_grid - frees a grid
+ *
+ * @grid: reference grid
+ * @height: rows
  */
 
 void free_grid(int **grid, int height)
 {
-	if (height != 0 && grid != NULL)
+	int iter = 0;
+
+	if (height <= 0)
+		return;
+	if (grid == NULL)
+		return;
+	while (iter < height)
 	{
-		for (; height >= 0; height--)
-			free(grid[height]);
-		free(grid);
+		free(grid[iter]);
+		iter++;
 	}
+	free(grid);
 }
